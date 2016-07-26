@@ -6,6 +6,11 @@ class Oscillator extends React.Component {
     super(props);
     this.env = this.props.envelope;
     this.waves = ['sine','square','triangle','sawtooth'];
+    // this.phaser = new Tone.Phaser({
+    // 	frequency : 15,
+    // 	octaves : 5,
+    // 	baseFrequency : 1000
+    // }).toMaster();
     this.tone = new Tone.Oscillator({
       frequency: this.props.frequency,
       type: this.waves[this.props.waveform],

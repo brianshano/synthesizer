@@ -15,10 +15,10 @@ class Synthesizer extends React.Component {
       dampening: 3000
     }).toMaster();
     this.chorus = new Tone.Chorus({
-      frequency: 0.5,
+      frequency: 1,
       delayTime: 1.5,
-      depth: 0.7,
-      feedback: 0.1,
+      depth: 0.8,
+      feedback: 0.01,
       type: 'sine',
       spread: 280
     }).toMaster();
