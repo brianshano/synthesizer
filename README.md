@@ -1,5 +1,5 @@
 # Basic Synthesizer
-A basic synthesizer using Tone.js and React
+A basic synthesizer using [Tone.js](https://github.com/Tonejs/Tone.js) and [React](https://facebook.github.io/react/)
 
 ### `npm start`
 
