@@ -30,7 +30,9 @@
   border-radius: 2px;
   height: 98px;
   border-bottom: 2px solid #000;
+  background: linear-gradient( 0deg, #000, #333 40%, #666 );
   &:active {
+    background: linear-gradient( 0deg, #000, #333 40%, #000 );
     height: 98px;
   }
 }
