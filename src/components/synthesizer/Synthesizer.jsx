@@ -52,7 +52,7 @@ class Synthesizer extends React.Component {
   }
   render() {
     return (
-      <section className="test">
+      <section className="synth">
         <Oscillator
           frequency={440}
           detune={ this.props.detuneAmount }
@@ -61,7 +61,7 @@ class Synthesizer extends React.Component {
           type={ 'sawtooth' }
           envelope={this.envelope}
           notePlaying={this.props.notePlaying}>
-          <section>testing the Oscillator</section>
+          <section></section>
         </Oscillator>
         <Keyboard onKeyDownCallback={this.startNote} onKeyUpCallback={this.stopNote} />
       </section>
