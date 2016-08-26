@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import Synthesizer from './components/synthesizer/Synthesizer';
+require('./styles/base.scss');
 
 class App extends Component {
   render() {

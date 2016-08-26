@@ -1,7 +1,10 @@
 @import url(https://fonts.googleapis.com/css?family=Roboto:400,300,500);
 body {
-  background: rgb(48, 48, 48);
-  color: #fff
+  // background-color: #fff;
+  // background: rgb(48, 48, 48);
+  // background-color: #000;
+  background: linear-gradient( 0deg, #000, #333 100%, #777 );
+  color: #fff;
 }
 h1, h2, h3, h4, h5, ul, p, button {
   font-family: "Roboto", "Helvetica", sans-serif;

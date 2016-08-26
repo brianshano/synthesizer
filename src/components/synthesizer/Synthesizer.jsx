@@ -4,6 +4,9 @@ import { startNote, stopNote } from '../../redux/modules/Synthesizer';
 import Oscillator from '../oscillator/Oscillator';
 import Tone from 'tone';
 import Keyboard from '../keyboard/Keyboard';
+import VolumeControl from '../controls/Volume';
+import DetuneControl from '../controls/Detune';
+import WaveformControl from '../controls/Waveform';
 // import './Synthesizer.scss';
 require('./Synthesizer.scss');
 
@@ -50,9 +53,15 @@ class Synthesizer extends React.Component {
     this.props.dispatch(startNote(false));
     this.envelope.triggerRelease();
   }
+  // <Keyboard onKeyDownCallback={this.startNote} onKeyUpCallback={this.stopNote} />
   render() {
     return (
       <section className="synth">
+        <section className="controls-container">
+          <VolumeControl className="volume-knob" />
+          <DetuneControl className="detune-knob"/>
+          <WaveformControl className="waveform-knob" />
+        </section>
         <Oscillator
           frequency={440}
           detune={ this.props.detuneAmount }

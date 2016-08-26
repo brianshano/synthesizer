@@ -2,4 +2,13 @@
   width: 618px;
   margin: auto;
   margin-top: 20px;
+  position: relative;
+}
+.controls-container {
+  width: 100%;
+  float: left;
+  // background-color: #333;
+  // box-shadow: 3px 2px 2px 2px;
+  margin-bottom: 5px;
+  background: linear-gradient( 0deg, #333, #555 40%, #999 );
 }

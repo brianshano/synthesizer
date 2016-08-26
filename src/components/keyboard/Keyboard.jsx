@@ -1,29 +1,19 @@
 import React, { PropTypes } from 'react';
 import { connect } from 'react-redux';
 import { onKeyPress, onKeyLeave } from '../../redux/modules/Keys';
+import { KEY_CONFIGURATION } from './config';
 import Tone from 'tone';
 require('./Keyboard.scss');
 
-const notes = [
-  'C3', 'C#3', 'D3', 'D#3', 'E3', 'F3', 'F#3', 'G3', 'G#3', 'A3', 'A#3', 'B3',
-  'C4', 'C#4', 'D4', 'D#4', 'E4', 'F4', 'F#4', 'G4', 'G#4', 'A4', 'A#4', 'B4'
-];
-const keyVisual = [
-  'left', 'black', 'center', 'black', 'right', 'left', 'black', 'center', 'black', 'center', 'black', 'right',
-  'left', 'black', 'center', 'black', 'right', 'left', 'black', 'center', 'black', 'center', 'black', 'right'
-];
-
 const Keyboard = (props) => {
-  const mouseEnter = (noteIndex, event) => {
+  const mouseEnter = (note, event) => {
     event.preventDefault();
     if (!props.keyDown) return;
-    const note = notes[noteIndex];
     props.dispatch(onKeyPress(note))
     if (props.onKeyDownCallback) props.onKeyDownCallback(note);
   }
-  const mouseDown = (noteIndex, event) => {
+  const mouseDown = (note, event) => {
     event.preventDefault();
-    const note = notes[noteIndex];
     props.dispatch(onKeyPress(note));
     if (props.onKeyDownCallback) props.onKeyDownCallback(note);
   }
@@ -38,22 +28,22 @@ const Keyboard = (props) => {
     props.dispatch(onKeyLeave(props.currentNote));
     if (props.onKeyUpCallback) props.onKeyUpCallback(props.currentNote);
   }
-  const activeKey = notes.indexOf(props.keyDown);
-  const keys = notes.map((item, index) => {
-    const style = {
+  const activeKey = KEY_CONFIGURATION.indexOf(props.keyDown);
+  const keys = KEY_CONFIGURATION.map((key, index) => {
+    let active = activeKey === index;
+    let classes = `key ${key.keyPosition}-key`;
+    let top = key.keyPosition !== 'black' ? <div className='top'></div> : null;
+    let style = {
       transform: 'translateY(' + (active ? 5 : 0) + 'px)'
     };
-    let active = activeKey === index;
-    let classes = `key ${keyVisual[index]}-key`;
-    let top = keyVisual[index] !== 'black' ? <div className='top'></div> : null;
     return (
       <div
         className={classes}
         key={index}
         style={style}
-        onMouseEnter={mouseEnter.bind(this, index)}
+        onMouseEnter={mouseEnter.bind(this, key.note)}
         onMouseLeave={mouseLeave}
-        onMouseDown={mouseDown.bind(this, index)}
+        onMouseDown={mouseDown.bind(this, key.note)}
         onMouseUp={mouseUp}>
         {top}
       </div>
